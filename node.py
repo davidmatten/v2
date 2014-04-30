@@ -59,12 +59,20 @@ class node:
     """A simple example node"""
     height = None
     name = None
+    status = None # True = infected. False / None = un-infected.
 
     def __init__(self):
         self.height = random.randint(57, 272)
         self.name = names[random.randint(0, 15)]
 
     def __repr__(self):
-        return str("Hi, my name is " + self.name + " and I am " + str(self.height) + "cm tall.")
+        return str("Hi, my name is " + self.name + " and I am " + str(self.height) + "cm tall, and I am %s" %self.get_status())
+
     def get_name(self):
         return self.name
+
+    def get_status(self):
+        if self.status:
+            return "Positive"
+        else:
+            return "Negative"
