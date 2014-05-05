@@ -60,6 +60,8 @@ class node:
     height = None
     name = None
     status = None # True = infected. False / None = un-infected.
+    relationship_status = False 
+    relationship_with = None
 
     def __init__(self):
         self.height = random.randint(57, 272)

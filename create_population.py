@@ -26,4 +26,12 @@ print "set infections"
 p.set_housing()
 print "housed the population"
 
+alice = p[0]
+bob = p[1]
+p.create_relationship(alice, bob)
+print "created a relationship between alice and bob"
+
+print p.get_relationships()
+
+
 print p

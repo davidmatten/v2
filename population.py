@@ -14,19 +14,25 @@ class population:
         for n in self.population:
             print n 
         return ""
+   
+    def __getitem__(self, n):
+        return self.population[n]
     
     def set_infection(self, prevelance=30):
+#{{{
         for p in self.population:
             r = random.randint(0, 100)
             if r < prevelance:
                 p.status = True
             else:
                 p.status = False
+#}}}
 
     def get_size(self):
         return len(self.population)
 
     def set_housing(self):
+#{{{
         self.households = {}
         i, h = 0, 0
         for p in self.population:
@@ -39,4 +45,38 @@ class population:
             if i > len(self.population):
                 break
             print "finished making houses"
+#}}}
+
+    def create_relationship(self, alice, bob):
+#{{{
+        alice.relationship_with = bob
+        alice.relationship_status = True
+        bob.relationship_with = alice
+        bob.relationship_status = True
+#}}}
+
+    def break_relationship(self, alice, bob):
+#{{{
+        alice.relationship_with = None
+        alice.relationship_status = False
+        bob.relationship_with = None 
+        bob.relationship_status = False
+#}}}
+
+    def get_relationships(self):
+        r = []
+        for n in self.population[:]:
+            if n.relationship_status:
+                r.append(n)
+        return r
+
+
+
+
+
+
+
+
+
+
 
